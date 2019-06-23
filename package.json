@@ -2,7 +2,7 @@
   "name": "uriyya",
   "productName": "uriyya",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Uriyya Music Player",
   "main": "dist/main.js",
   "scripts": {
     "build-dev": "webpack --open --config webpack.dev.js",
@@ -14,19 +14,18 @@
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
-  "author": "bernalhernandezbarquero",
+  "author": "hernandezbb",
   "license": "MIT",
   "config": {
     "forge": "./forge.config.js"
   },
   "dependencies": {
-    "@types/howler": "^2.1.0",
-    "@types/mousetrap": "^1.6.2",
     "howler": "^2.0.15",
-    "jquery": "^3.4.0",
     "mousetrap": "^1.6.2"
   },
   "devDependencies": {
+    "@types/howler": "^2.1.0",
+    "@types/mousetrap": "^1.6.2",
     "@electron-forge/cli": "6.0.0-beta.39",
     "@electron-forge/maker-zip": "6.0.0-beta.39",
     "awesome-typescript-loader": "^5.2.1",
