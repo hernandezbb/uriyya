@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 process.env.NODE_ENV = "development";
 
@@ -18,7 +19,7 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    plugins: [],
+    plugins: [new CleanWebpackPlugin()],
     module: {
       rules: [
         {
@@ -39,7 +40,7 @@ module.exports = [
     mode: "development",
     target: "electron-renderer",
     devtool: "cheap-module-source-map",
-    entry: "./src/renderer-process/renderer.ts",
+    entry: "./src/renderer-process/renderer.tsx",
     output: {
       filename: "renderer.js",
       path: __dirname + "/dist"
@@ -50,6 +51,12 @@ module.exports = [
     },
     plugins: [
       new HtmlWebpackPlugin({
+        templateParameters: {
+          reactDependencies: `
+  <!-- Dependencies-->
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>`
+        },
         template: "src/index.html"
       }),
       new MiniCssExtractPlugin({
@@ -65,10 +72,7 @@ module.exports = [
         },
         {
           test: /(\.css)$/,
-          use: [
-            { loader: MiniCssExtractPlugin.loader },
-            { loader: "css-loader" }
-          ]
+          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,

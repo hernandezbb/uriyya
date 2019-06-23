@@ -7,6 +7,6 @@
     "target": "es6",
     "jsx": "react"
   },
-  "include": ["./src/**/*", "../../GitHub/uriyya/main-process/main.js"],
+  "include": ["./src/"],
   "exclude": ["./dist/"]
 }

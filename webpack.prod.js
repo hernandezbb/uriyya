@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ClosurePlugin = require("closure-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 process.env.NODE_ENV = "production";
 
@@ -18,7 +19,7 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    plugins: [],
+    plugins: [new CleanWebpackPlugin()],
     module: {
       rules: [
         {
@@ -35,7 +36,7 @@ module.exports = [
   {
     mode: "production",
     target: "electron-renderer",
-    entry: "./src/renderer-process/renderer.ts",
+    entry: "./src/renderer-process/renderer.tsx",
     output: {
       filename: "renderer.js",
       path: __dirname + "/dist"
@@ -45,7 +46,11 @@ module.exports = [
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "src/index.html"
+        templateParameters: {
+          reactDependencies: ""
+        },
+        template: "src/index.html",
+        minify: true
       }),
       new MiniCssExtractPlugin({
         filename: "bundle.css"
@@ -60,10 +65,7 @@ module.exports = [
         },
         {
           test: /(\.css)$/,
-          use: [
-            { loader: MiniCssExtractPlugin.loader },
-            { loader: "css-loader" }
-          ]
+          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,
@@ -89,15 +91,8 @@ module.exports = [
         }
       ]
     },
-    externals: {
-      react: "React",
-      "react-dom": "ReactDOM"
-    },
     optimization: {
-      minimizer: [
-        new ClosurePlugin({ mode: "STANDARD" }, {}),
-        new OptimizeCSSAssetsPlugin({})
-      ]
+      minimizer: [new ClosurePlugin({ mode: "STANDARD" }, {}), new OptimizeCSSAssetsPlugin({})]
     }
   }
 ];

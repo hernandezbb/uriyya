@@ -1,8 +1,12 @@
 {
   "name": "uriyya",
   "productName": "uriyya",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "Uriyya Music Player",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hernandezbb/uriyya.git"
+  },
   "main": "dist/main.js",
   "scripts": {
     "build-dev": "webpack --open --config webpack.dev.js",
@@ -21,14 +25,19 @@
   },
   "dependencies": {
     "howler": "^2.0.15",
-    "mousetrap": "^1.6.2"
+    "mousetrap": "^1.6.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@types/howler": "^2.1.0",
-    "@types/mousetrap": "^1.6.2",
     "@electron-forge/cli": "6.0.0-beta.39",
     "@electron-forge/maker-zip": "6.0.0-beta.39",
+    "@types/howler": "^2.1.0",
+    "@types/mousetrap": "^1.6.2",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
     "awesome-typescript-loader": "^5.2.1",
+    "clean-webpack-plugin": "^3.0.0",
     "closure-webpack-plugin": "^2.0.1",
     "css-loader": "2.1.1",
     "electron": "5.0.5",
