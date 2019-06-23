@@ -1,0 +1,48 @@
+{
+  "name": "uriyya",
+  "productName": "uriyya",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "dist/main.js",
+  "scripts": {
+    "build-dev": "webpack --open --config webpack.dev.js",
+    "build-prod": "webpack --config webpack.prod.js",
+    "start": "npm run build-dev && electron-forge start",
+    "package": "npm run build-dev && electron-forge package",
+    "make": "npm run build-prod && electron-forge make",
+    "publish": "npm run build-prod && electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": "bernalhernandezbarquero",
+  "license": "MIT",
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "dependencies": {
+    "@types/howler": "^2.1.0",
+    "@types/mousetrap": "^1.6.2",
+    "howler": "^2.0.15",
+    "jquery": "^3.4.0",
+    "mousetrap": "^1.6.2"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.39",
+    "@electron-forge/maker-zip": "6.0.0-beta.39",
+    "awesome-typescript-loader": "^5.2.1",
+    "closure-webpack-plugin": "^2.0.1",
+    "css-loader": "2.1.1",
+    "electron": "5.0.5",
+    "file-loader": "^4.0.0",
+    "google-closure-compiler": "^20190618.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "0.23.1",
+    "typescript": "^3.5.1",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4",
+    "webpack-merge": "^4.2.1"
+  }
+}
