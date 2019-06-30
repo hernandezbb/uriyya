@@ -15,12 +15,15 @@ export class Library extends React.Component<LibraryProps, {}> {
 
   render() {
     return (
-      <div onClick={this.handleClick}>
-        <a className={`nav-group-item ${this.getActiveClass()}`}>
+      <>
+        <a
+          className={`nav-group-item ${this.getActiveClass()}`}
+          onClick={this.handleClick}
+        >
           <span className="icon icon-note" />
           {this.props.name}
         </a>
-      </div>
+      </>
     );
   }
 
@@ -28,7 +31,7 @@ export class Library extends React.Component<LibraryProps, {}> {
     return this.props.isActive ? "active" : "";
   }
 
-  handleClick(event: React.MouseEvent<HTMLDivElement>) {
+  handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     this.props.handleClick(this.props.id);
   }

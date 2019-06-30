@@ -1,19 +1,27 @@
 import * as React from "react";
 import { Header } from "./common/Header";
 import { Sidebar } from "./sidebar/Sidebar";
-import { Pane } from "./common/Pane";
+import { SongList } from "./songList/SongList";
+import * as PlaylistEvents from "../events/Playlist";
+import * as LibraryEvents from "../events/Library";
 
-export class App extends React.Component<{}, {}> {
-  theLibraries: ViewModels.Library[] = [
-    { id: 1, name: "Main" },
-    { id: 2, name: "Main 2" },
-    { id: 3, name: "Main 3" }
-  ];
-  thePlaylist: ViewModels.Playlist[] = [
-    { id: 1, name: "Playlist 1" },
-    { id: 2, name: "Playlist 2" },
-    { id: 3, name: "Playlist 3" }
-  ];
+interface AppState {
+  theLibraries: ViewModels.Library[];
+  thePlaylists: ViewModels.Playlist[];
+  theSongs: ViewModels.Song[];
+}
+
+export class App extends React.Component<{}, AppState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      theLibraries: LibraryEvents.getAll(),
+      thePlaylists: PlaylistEvents.getAll(),
+      theSongs: []
+    };
+    this.handleLibraryClick = this.handleLibraryClick.bind(this);
+    this.handlePlaylistClick = this.handlePlaylistClick.bind(this);
+  }
 
   render() {
     return (
@@ -22,13 +30,23 @@ export class App extends React.Component<{}, {}> {
         <div className="window-content">
           <div className="pane-group">
             <Sidebar
-              theLibraries={this.theLibraries}
-              thePlayLists={this.thePlaylist}
+              theLibraries={this.state.theLibraries}
+              thePlayLists={this.state.thePlaylists}
+              handleLibraryClick={this.handleLibraryClick}
+              handlePlaylistClick={this.handlePlaylistClick}
             />
-            <Pane />
+            <SongList theSongs={this.state.theSongs} />
           </div>
         </div>
       </div>
     );
+  }
+
+  handleLibraryClick(id: number) {
+    this.setState({ theSongs: LibraryEvents.getSongs(id) });
+  }
+
+  handlePlaylistClick(id: number) {
+    this.setState({ theSongs: PlaylistEvents.getSongs(id) });
   }
 }

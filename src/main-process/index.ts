@@ -1,6 +1,4 @@
 import { app, BrowserWindow } from "electron";
-import * as path from "path";
-import * as os from "os";
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -12,14 +10,15 @@ function createWindow() {
     minHeight: 600,
     titleBarStyle: "hiddenInset",
     webPreferences: {
-      scrollBounce: true
+      scrollBounce: true,
+      nodeIntegration: true
     },
     width: 935
   });
 
   mainWindow.loadFile("dist/index.html");
 
-  // mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   mainWindow.on("closed", () => {
     mainWindow = null;
@@ -42,3 +41,5 @@ app.on("activate", () => {
 });
 
 require("./menu");
+require("./events/Playlist");
+require("./events/Library");

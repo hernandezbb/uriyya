@@ -5,6 +5,8 @@ import { Playlist } from "./Playlist";
 interface SidebarProps {
   thePlayLists: ViewModels.Playlist[];
   theLibraries: ViewModels.Library[];
+  handleLibraryClick: (id: number) => void;
+  handlePlaylistClick: (id: number) => void;
 }
 
 interface SidebarState {
@@ -47,6 +49,7 @@ export class Sidebar extends React.Component<SidebarProps, SidebarState> {
 
   libraryClickHandler = (theLibraryKey: number) => {
     this.setState({ selectedLibrary: theLibraryKey, selectedPlaylist: 0 });
+    this.props.handleLibraryClick(theLibraryKey);
   };
 
   libraryIsActive(theLibraryKey: number) {
@@ -55,6 +58,7 @@ export class Sidebar extends React.Component<SidebarProps, SidebarState> {
 
   playlistClickHandler = (thePlaylistKey: number) => {
     this.setState({ selectedPlaylist: thePlaylistKey, selectedLibrary: 0 });
+    this.props.handlePlaylistClick(thePlaylistKey);
   };
 
   playlistIsActive(thePlaylistKey: number) {
