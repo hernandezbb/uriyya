@@ -10,7 +10,6 @@ interface LibraryProps {
 export class Library extends React.Component<LibraryProps, {}> {
   constructor(props: LibraryProps) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
@@ -31,8 +30,8 @@ export class Library extends React.Component<LibraryProps, {}> {
     return this.props.isActive ? "active" : "";
   }
 
-  handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     this.props.handleClick(this.props.id);
-  }
+  };
 }

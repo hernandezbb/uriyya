@@ -2,12 +2,9 @@ import * as React from "react";
 import { Header } from "./common/Header";
 import { Sidebar } from "./sidebar/Sidebar";
 import { SongList } from "./songList/SongList";
-import * as PlaylistEvents from "../events/Playlist";
-import * as LibraryEvents from "../events/Library";
+import * as SongEvents from "../events/Song";
 
 interface AppState {
-  theLibraries: ViewModels.Library[];
-  thePlaylists: ViewModels.Playlist[];
   theSongs: ViewModels.Song[];
 }
 
@@ -15,12 +12,8 @@ export class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      theLibraries: LibraryEvents.getAll(),
-      thePlaylists: PlaylistEvents.getAll(),
       theSongs: []
     };
-    this.handleLibraryClick = this.handleLibraryClick.bind(this);
-    this.handlePlaylistClick = this.handlePlaylistClick.bind(this);
   }
 
   render() {
@@ -30,8 +23,6 @@ export class App extends React.Component<{}, AppState> {
         <div className="window-content">
           <div className="pane-group">
             <Sidebar
-              theLibraries={this.state.theLibraries}
-              thePlayLists={this.state.thePlaylists}
               handleLibraryClick={this.handleLibraryClick}
               handlePlaylistClick={this.handlePlaylistClick}
             />
@@ -42,11 +33,11 @@ export class App extends React.Component<{}, AppState> {
     );
   }
 
-  handleLibraryClick(id: number) {
-    this.setState({ theSongs: LibraryEvents.getSongs(id) });
-  }
+  handleLibraryClick = (theLibraryId: number) => {
+    this.setState({ theSongs: SongEvents.getSongsByLibraryId(theLibraryId) });
+  };
 
-  handlePlaylistClick(id: number) {
-    this.setState({ theSongs: PlaylistEvents.getSongs(id) });
-  }
+  handlePlaylistClick = (thePlaylistId: number) => {
+    this.setState({ theSongs: SongEvents.getSongsByPlaylistId(thePlaylistId) });
+  };
 }

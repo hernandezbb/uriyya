@@ -10,7 +10,6 @@ interface PlaylistProps {
 export class Playlist extends React.Component<PlaylistProps, {}> {
   constructor(props: PlaylistProps) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
@@ -28,8 +27,8 @@ export class Playlist extends React.Component<PlaylistProps, {}> {
     return this.props.isActive ? "active" : "";
   }
 
-  handleClick(event: React.MouseEvent<HTMLDivElement>) {
+  handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     this.props.handleClick(this.props.id);
-  }
+  };
 }
