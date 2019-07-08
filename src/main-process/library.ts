@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { dialog } from "electron";
+import { LibraryContext } from "./data/dbContext/LibraryContext";
 
 const SONGS_EXTENSIONS = [
   ".mp3",
@@ -13,8 +14,13 @@ const SONGS_EXTENSIONS = [
 ];
 
 export class Library {
-  constructor() {}
-  Import() {
+  library: Models.Library;
+
+  constructor() {
+    this.library = new Models.Library();
+  }
+
+  Import = () => {
     dialog.showOpenDialog(
       {
         title: "Select a directory",
@@ -23,32 +29,38 @@ export class Library {
       theSelectedDirectories => {
         if (theSelectedDirectories) {
           var theSelectedPath = getTheSelectedPath(theSelectedDirectories);
-          getFiles(theSelectedPath);
+          this.library.path = theSelectedPath;
+          this.library.name = theSelectedPath;
+
+          var theSongs: Models.Song[] = getFiles(theSelectedPath);
+          this.library.songs = theSongs;
+
+          new LibraryContext().add(this.library);
         }
       }
     );
-  }
+  };
 }
 
 function getTheSelectedPath(theSelectedDirectories: string[]) {
   return theSelectedDirectories[0];
 }
 
-function getFiles(theDirectoryPath: string) {
-  fs.readdir(theDirectoryPath, function(err, theItems) {
-    if (theItems) {
-      theItems = filterHiddenItems(theItems);
-
-      theItems.forEach(theItem => {
-        var theFullPath = theDirectoryPath + "/" + theItem;
-        if (isASong(theFullPath)) {
-          console.log(theFullPath);
-        } else {
-          getFiles(theFullPath);
-        }
-      });
-    }
-  });
+function getFiles(theDirectoryPath: string): Models.Song[] {
+  var theSongs: Models.Song[] = [];
+  var theItems = fs.readdirSync(theDirectoryPath);
+  if (theItems) {
+    theItems = filterHiddenItems(theItems);
+    theItems.forEach(theItem => {
+      var theFullPath = theDirectoryPath + "/" + theItem;
+      if (isASong(theFullPath)) {
+        theSongs.push({ name: "", path: theFullPath });
+      } else {
+        getFiles(theFullPath);
+      }
+    });
+  }
+  return theSongs;
 }
 
 function filterHiddenItems(theItems: string[]) {

@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 process.env.NODE_ENV = "development";
 
@@ -9,17 +8,17 @@ module.exports = [
     mode: "development",
     devtool: "cheap-module-source-map",
     target: "electron-main",
-    devtool: "cheap-module-source-map",
     entry: "./src/main-process/index.ts",
     output: {
       filename: "main.js",
-      path: __dirname + "/dist"
+      path: __dirname + "/dist",
+      devtoolModuleFilenameTemplate: "[absolute-resource-path]"
     },
 
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    plugins: [new CleanWebpackPlugin()],
+    plugins: [],
     module: {
       rules: [
         {
@@ -72,7 +71,11 @@ module.exports = [
         },
         {
           test: /(\.css)$/,
-          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            { loader: "css-loader" }
+          ],
+          exclude: /node_modules/
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,

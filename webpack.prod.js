@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ClosurePlugin = require("closure-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 process.env.NODE_ENV = "production";
 
@@ -19,7 +18,7 @@ module.exports = [
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
-    plugins: [new CleanWebpackPlugin()],
+    plugins: [],
     module: {
       rules: [
         {
@@ -65,7 +64,10 @@ module.exports = [
         },
         {
           test: /(\.css)$/,
-          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
+          use: [
+            { loader: MiniCssExtractPlugin.loader },
+            { loader: "css-loader" }
+          ]
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,
@@ -92,7 +94,10 @@ module.exports = [
       ]
     },
     optimization: {
-      minimizer: [new ClosurePlugin({ mode: "STANDARD" }, {}), new OptimizeCSSAssetsPlugin({})]
+      minimizer: [
+        new ClosurePlugin({ mode: "STANDARD" }, {}),
+        new OptimizeCSSAssetsPlugin({})
+      ]
     }
   }
 ];

@@ -41,5 +41,5 @@ app.on("activate", () => {
 });
 
 require("./menu");
-require("./events/Playlist");
-require("./events/Library");
+require("./events/getLibraries/Event");
+require("./events/getPlaylists/Event");
