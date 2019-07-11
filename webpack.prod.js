@@ -48,7 +48,7 @@ module.exports = [
         templateParameters: {
           reactDependencies: ""
         },
-        template: "src/index.html",
+        template: "src/renderer-process/index.html",
         minify: true
       }),
       new MiniCssExtractPlugin({

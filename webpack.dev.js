@@ -56,7 +56,7 @@ module.exports = [
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>`
         },
-        template: "src/index.html"
+        template: "src/renderer-process/index.html"
       }),
       new MiniCssExtractPlugin({
         filename: "bundle.css"
