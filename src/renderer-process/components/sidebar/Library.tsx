@@ -4,7 +4,7 @@ interface LibraryProps {
   id: number;
   name: string;
   isActive: boolean;
-  handleClick: (id: number) => void;
+  handleClick?: (id: number) => void;
 }
 
 export class Library extends React.Component<LibraryProps, {}> {

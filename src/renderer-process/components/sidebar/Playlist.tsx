@@ -4,7 +4,7 @@ interface PlaylistProps {
   id: number;
   name: string;
   isActive: boolean;
-  handleClick: (id: number) => void;
+  handleClick?: (id: number) => void;
 }
 
 export class Playlist extends React.Component<PlaylistProps, {}> {
