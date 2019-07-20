@@ -1,5 +1,5 @@
 interface State {
-  readonly data: ViewModels.Library[];
+  data: ViewModels.Song[];
 }
 
 export default State;

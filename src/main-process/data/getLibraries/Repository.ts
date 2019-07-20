@@ -11,7 +11,7 @@ export class Repository {
     return [
       {
         id: 1,
-        name: "Hello",
+        name: "Library 1",
         path: "",
         songs: []
       }

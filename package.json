@@ -9,12 +9,12 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "build-dev": "webpack -d --config webpack.dev.js",
-    "build-prod": "webpack -p --config webpack.prod.js",
-    "start": "npm run build-dev && electron-forge start",
+    "build-dev": "webpack -dw --config webpack.dev.js",
+    "build": "webpack -p --config webpack.prod.js",
+    "start": "electron-forge start",
     "package": "npm run build-dev && electron-forge package",
-    "make": "npm run build-prod && electron-forge make",
-    "publish": "npm run build-prod && electron-forge publish",
+    "make": "npm run build && electron-forge make",
+    "publish": "npm run build && electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],

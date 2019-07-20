@@ -1,8 +1,8 @@
 import * as React from 'React';
 
-import * as SidebarEvents from '../../events/Sidebar';
-import LibraryList from './LibraryList';
-import PlaylistList from './PlaylistList';
+import * as SidebarEvents from '../../events/sidebar';
+import LibraryList from '../libraries/LibraryList';
+import PlaylistList from '../playlists/PlaylistList';
 
 export class Sidebar extends React.Component<{}, {}> {
   render() {

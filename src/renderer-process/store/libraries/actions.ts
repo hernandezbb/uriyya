@@ -1,21 +1,21 @@
 import { Action, AnyAction, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import * as libraryAPI from '../../events/Library';
-import AppState from '../AppState';
+import * as libraryAPI from '../../events/libraries';
+import { AppState } from '../appState';
 import * as types from './actionsTypes';
 
-function getLibrariesSuccess(theLibraries: ViewModels.Library[]): types.ActionsTypes {
-  return { type: types.GET_LIBRARIES_SUCCES, payload: theLibraries };
+function loadLibrariesSuccess(theLibraries: ViewModels.Library[]): types.ActionsTypes {
+  return { type: types.LOAD_LIBRARIES_SUCCES, payload: theLibraries };
 }
 
-export function createLibrary(theLibrary: ViewModels.Library): types.ActionsTypes {
-  return { type: types.CREATE_LIBRARY, payload: theLibrary };
+function addLibrary(theLibrary: ViewModels.Library): types.ActionsTypes {
+  return { type: types.ADD_LIBRARY, payload: theLibrary };
 }
 
 export function loadLibraries(): ThunkAction<void, AppState, null, Action<types.ActionsTypes>> {
   return (dispatch: Dispatch<AnyAction>) => {
     var theLibraries = libraryAPI.getAll();
-    return dispatch(getLibrariesSuccess(theLibraries));
+    return dispatch(loadLibrariesSuccess(theLibraries));
   };
 }

@@ -1,14 +1,14 @@
-export const CREATE_PLAYLIST: string = "CREATE_PLAYLIST";
-export const GET_PLAYLISTS_SUCCES: string = "GET_PLAYLISTS_SUCCES";
+export const ADD_PLAYLIST: string = "CREATE_PLAYLIST";
+export const LOAD_PLAYLISTS_SUCCES: string = "GET_PLAYLISTS_SUCCES";
 
-interface CreateAction {
-  type: typeof CREATE_PLAYLIST;
+interface AddAction {
+  type: typeof ADD_PLAYLIST;
   payload: ViewModels.Playlist;
 }
 
-interface GetSuccesAction {
-  type: typeof GET_PLAYLISTS_SUCCES;
-  payload: ViewModels.Library[];
+interface LoadSuccesAction {
+  type: typeof LOAD_PLAYLISTS_SUCCES;
+  payload: ViewModels.Playlist[];
 }
 
-export type ActionsTypes = CreateAction | GetSuccesAction;
+export type ActionsTypes = AddAction | LoadSuccesAction;

@@ -39,7 +39,7 @@ module.exports = [
     mode: "development",
     target: "electron-renderer",
     devtool: "cheap-module-source-map",
-    entry: "./src/renderer-process/renderer.tsx",
+    entry: "./src/renderer-process/index.tsx",
     output: {
       filename: "renderer.js",
       path: __dirname + "/dist"

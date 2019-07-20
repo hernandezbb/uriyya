@@ -1,21 +1,21 @@
 import { Action, AnyAction, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
-import * as playlistAPI from '../../events/Playlist';
-import AppState from '../AppState';
+import * as playlistAPI from '../../events/playlists';
+import { AppState } from '../appState';
 import * as types from './actionsTypes';
 
-function getPlaylistsSuccess(thePlaylists: ViewModels.Playlist[]): types.ActionsTypes {
-  return { type: types.GET_PLAYLISTS_SUCCES, payload: thePlaylists };
+function loadPlaylistsSuccess(thePlaylists: ViewModels.Playlist[]): types.ActionsTypes {
+  return { type: types.LOAD_PLAYLISTS_SUCCES, payload: thePlaylists };
 }
 
-export function createPlaylist(thePlaylist: ViewModels.Playlist): types.ActionsTypes {
-  return { type: types.CREATE_PLAYLIST, payload: thePlaylist };
+function addPlaylist(thePlaylist: ViewModels.Playlist): types.ActionsTypes {
+  return { type: types.ADD_PLAYLIST, payload: thePlaylist };
 }
 
-export function loadLibraries(): ThunkAction<void, AppState, null, Action<types.ActionsTypes>> {
+export function getLibraries(): ThunkAction<void, AppState, null, Action<types.ActionsTypes>> {
   return (dispatch: Dispatch<AnyAction>) => {
     var thePlaylists = playlistAPI.getAll();
-    return dispatch(getPlaylistsSuccess(thePlaylists));
+    return dispatch(loadPlaylistsSuccess(thePlaylists));
   };
 }

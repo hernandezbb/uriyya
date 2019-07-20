@@ -35,7 +35,7 @@ module.exports = [
   {
     mode: "production",
     target: "electron-renderer",
-    entry: "./src/renderer-process/renderer.tsx",
+    entry: "./src/renderer-process/index.tsx",
     output: {
       filename: "renderer.js",
       path: __dirname + "/dist"
@@ -64,10 +64,7 @@ module.exports = [
         },
         {
           test: /(\.css)$/,
-          use: [
-            { loader: MiniCssExtractPlugin.loader },
-            { loader: "css-loader" }
-          ]
+          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: "css-loader" }]
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/,
@@ -94,10 +91,7 @@ module.exports = [
       ]
     },
     optimization: {
-      minimizer: [
-        new ClosurePlugin({ mode: "STANDARD" }, {}),
-        new OptimizeCSSAssetsPlugin({})
-      ]
+      minimizer: [new ClosurePlugin({ mode: "STANDARD" }, {}), new OptimizeCSSAssetsPlugin({})]
     }
   }
 ];
