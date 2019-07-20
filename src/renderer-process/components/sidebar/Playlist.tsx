@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface PlaylistProps {
   id: number;
   name: string;
   isActive: boolean;
-  handleClick?: (id: number) => void;
+  handleClick: (id: number) => void;
 }
 
 export class Playlist extends React.Component<PlaylistProps, {}> {
@@ -15,7 +15,7 @@ export class Playlist extends React.Component<PlaylistProps, {}> {
   render() {
     return (
       <div onClick={this.handleClick}>
-        <span className={`nav-group-item ${this.getActiveClass()}`}>
+        <span className={this.getClass()}>
           <span className="icon icon-list " />
           {this.props.name}
         </span>
@@ -23,8 +23,8 @@ export class Playlist extends React.Component<PlaylistProps, {}> {
     );
   }
 
-  getActiveClass(): string {
-    return this.props.isActive ? "active" : "";
+  getClass(): string {
+    return `nav-group-item ${this.props.isActive ? "active" : ""}`;
   }
 
   handleClick = (event: React.MouseEvent<HTMLDivElement>) => {

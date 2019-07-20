@@ -1,5 +1,6 @@
-import * as React from "React";
-import { Song } from "./Song";
+import * as React from 'React';
+
+import { Song } from './Song';
 
 interface PaneProps {
   theSongs: ViewModels.Song[];

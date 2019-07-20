@@ -1,9 +1,9 @@
-import * as types from "./actionsTypes";
-import State from "./state";
+import * as types from './actionsTypes';
+import State from './state';
 
 const initialState: State = {
-  data: [{ id: 1, name: "hola" }],
-  selectedLibrary: 0
+  selectedLibrary: 0,
+  data: []
 };
 
 export function libraryReducer(state = initialState, action: types.ActionsTypes): State {
@@ -11,8 +11,10 @@ export function libraryReducer(state = initialState, action: types.ActionsTypes)
     case types.CREATE_LIBRARY:
       return {
         ...state,
-        data: [...state.data, action.payload]
+        data: [...state.data, action.payload as ViewModels.Library]
       };
+    case types.GET_LIBRARIES_SUCCES:
+      return { ...state, data: action.payload as ViewModels.Library[] };
     default:
       return state;
   }

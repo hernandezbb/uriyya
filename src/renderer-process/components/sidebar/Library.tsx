@@ -1,10 +1,10 @@
-import * as React from "React";
+import * as React from 'React';
 
 interface LibraryProps {
   id: number;
   name: string;
   isActive: boolean;
-  handleClick?: (id: number) => void;
+  handleClick: (id: number) => void;
 }
 
 export class Library extends React.Component<LibraryProps, {}> {
@@ -15,10 +15,7 @@ export class Library extends React.Component<LibraryProps, {}> {
   render() {
     return (
       <>
-        <a
-          className={`nav-group-item ${this.getActiveClass()}`}
-          onClick={this.handleClick}
-        >
+        <a className={this.getClass()} onClick={this.handleClick}>
           <span className="icon icon-note" />
           {this.props.name}
         </a>
@@ -26,8 +23,8 @@ export class Library extends React.Component<LibraryProps, {}> {
     );
   }
 
-  getActiveClass(): string {
-    return this.props.isActive ? "active" : "";
+  getClass(): string {
+    return `nav-group-item ${this.props.isActive ? "active" : ""}`;
   }
 
   handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {

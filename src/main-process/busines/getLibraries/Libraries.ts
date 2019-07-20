@@ -1,4 +1,4 @@
-import { LibrariesData } from "./LibrariesData";
+import { LibrariesData } from './LibrariesData';
 
 export class Libraries {
   theLibrariesData: LibrariesData;

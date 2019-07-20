@@ -1,4 +1,4 @@
-import { ipcMain } from "electron";
+import { ipcMain } from 'electron';
 
 ipcMain.on("get-all-playlists", (event: any) => {
   event.returnValue = [

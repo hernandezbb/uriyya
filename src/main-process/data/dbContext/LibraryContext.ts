@@ -1,5 +1,5 @@
-import { app } from "electron";
-import * as DataStore from "nedb";
+import { app } from 'electron';
+import * as DataStore from 'nedb';
 
 export class LibraryContext {
   db: DataStore;
@@ -21,3 +21,4 @@ export class LibraryContext {
     this.db.insert(theLibrary);
   };
 }
+``

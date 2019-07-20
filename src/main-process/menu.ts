@@ -1,5 +1,6 @@
-import { Library } from "./library";
-import { app, Menu } from "electron";
+import { app, Menu } from 'electron';
+
+import { Library } from './library';
 
 const theTemplate: Electron.MenuItemConstructorOptions[] = [
   {

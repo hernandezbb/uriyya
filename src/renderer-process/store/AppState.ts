@@ -1,5 +1,5 @@
-import LibrariesState from "./libraries/state";
-import PlaylistsState from "./playlists/state";
+import LibrariesState from './libraries/state';
+import PlaylistsState from './playlists/state';
 
 interface AppState {
   Libraries: LibrariesState;

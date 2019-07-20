@@ -1,4 +1,4 @@
-import { LibraryContext } from "../dbContext/LibraryContext";
+import { LibraryContext } from '../dbContext/LibraryContext';
 
 export class Repository {
   theContext: LibraryContext;
@@ -8,6 +8,14 @@ export class Repository {
   }
 
   get = (): Models.Library[] => {
-    return this.theContext.db.getAllData();
+    return [
+      {
+        id: 1,
+        name: "Hello",
+        path: "",
+        songs: []
+      }
+    ];
+    // return this.theContext.db.getAllData();
   };
 }

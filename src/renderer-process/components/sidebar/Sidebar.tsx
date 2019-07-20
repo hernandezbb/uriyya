@@ -1,18 +1,10 @@
-import * as React from "React";
-import LibraryList from "./LibraryList";
-import PlaylistList from "./PlaylistList";
-import * as SidebarEvents from "../../events/Sidebar";
+import * as React from 'React';
 
-interface SidebarProps {
-  handleLibraryClick: (id: number) => void;
-  handlePlaylistClick: (id: number) => void;
-}
+import * as SidebarEvents from '../../events/Sidebar';
+import LibraryList from './LibraryList';
+import PlaylistList from './PlaylistList';
 
-export class Sidebar extends React.Component<SidebarProps, {}> {
-  constructor(props: SidebarProps) {
-    super(props);
-  }
-
+export class Sidebar extends React.Component<{}, {}> {
   render() {
     return (
       <div className="pane-sm sidebar" onContextMenu={this.handleContextMenu}>
@@ -30,22 +22,4 @@ export class Sidebar extends React.Component<SidebarProps, {}> {
     event.preventDefault();
     SidebarEvents.showContextMenu();
   };
-
-  // libraryClickHandler = (theLibraryKey: number) => {
-  //   this.setState({ selectedLibrary: theLibraryKey, selectedPlaylist: 0 });
-  //   this.props.handleLibraryClick(theLibraryKey);
-  // };
-
-  // libraryIsActive(theLibraryKey: number) {
-  //   return theLibraryKey == this.state.selectedLibrary;
-  // }
-
-  // playlistClickHandler = (thePlaylistKey: number) => {
-  //   this.setState({ selectedPlaylist: thePlaylistKey });
-  //   this.props.handlePlaylistClick(thePlaylistKey);
-  // };
-
-  // playlistIsActive(thePlaylistKey: number) {
-  //   return thePlaylistKey == this.state.selectedPlaylist;
-  // }
 }

@@ -1,5 +1,5 @@
-import { Howl, Howler } from "howler";
-import * as Mousetrap from "mousetrap";
+import { Howl, Howler } from 'howler';
+import * as Mousetrap from 'mousetrap';
 
 /* ****** Player ******* */
 

@@ -1,11 +1,14 @@
-import * as React from "react";
-import { Library } from "./Library";
-import { connect } from "react-redux";
-import AppState from "../../store/AppState";
-// import liraryActions from "../../redux/actions/libraryActions";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { AnyAction, bindActionCreators, Dispatch } from 'redux';
+
+import AppState from '../../store/AppState';
+import * as Actions from '../../store/libraries/actions';
+import { Library } from './Library';
 
 interface LibraryListProps {
   Libraries?: ViewModels.Library[];
+  actions?: typeof Actions;
 }
 
 interface LibraryListState {
@@ -20,12 +23,17 @@ class LibraryList extends React.Component<LibraryListProps, LibraryListState> {
     };
   }
 
+  componentDidMount() {
+    this.props.actions.loadLibraries();
+  }
+
   render() {
     return this.props.Libraries.map(theLibrary => (
       <Library
         key={theLibrary.id}
         {...theLibrary}
         isActive={this.libraryIsActive(theLibrary.id)}
+        handleClick={this.libraryClickHandler}
       />
     ));
   }
@@ -45,4 +53,13 @@ function mapStateToProps({ Libraries }: AppState) {
   };
 }
 
-export default connect(mapStateToProps)(LibraryList);
+function mapDispathToProps(dispatch: Dispatch<AnyAction>) {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispathToProps
+)(LibraryList);

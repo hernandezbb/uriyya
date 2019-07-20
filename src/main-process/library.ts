@@ -1,7 +1,8 @@
-import * as fs from "fs";
-import * as path from "path";
-import { dialog } from "electron";
-import { LibraryContext } from "./data/dbContext/LibraryContext";
+import { dialog } from 'electron';
+import * as fs from 'fs';
+import * as path from 'path';
+
+import { LibraryContext } from './data/dbContext/LibraryContext';
 
 const SONGS_EXTENSIONS = [
   ".mp3",

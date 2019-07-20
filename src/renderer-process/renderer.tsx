@@ -1,8 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { App } from "./components/App";
-import { configureStore } from "./store/configureStore";
-import { Provider as ReduxProvider } from "react-redux";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Provider as ReduxProvider } from 'react-redux';
+
+import { App } from './components/App';
+import { configureStore } from './store/configureStore';
 
 require("../css/photon.min.css");
 require("../css/app.css");

@@ -1,4 +1,5 @@
-import { remote } from "electron";
+import { remote } from 'electron';
+
 const { Menu, MenuItem } = remote;
 
 export function showContextMenu(): void {
