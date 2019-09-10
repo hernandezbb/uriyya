@@ -8,7 +8,7 @@ function createWindow() {
     height: 680,
     minWidth: 800,
     minHeight: 600,
-    titleBarStyle: "hiddenInset",
+    titleBarStyle: "hidden",
     webPreferences: {
       scrollBounce: true,
       nodeIntegration: true

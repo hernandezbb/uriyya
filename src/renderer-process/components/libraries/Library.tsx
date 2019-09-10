@@ -4,7 +4,7 @@ interface LibraryProps {
   id: number;
   name: string;
   isActive: boolean;
-  handleClick: (id: number) => void;
+  onClick: (id: number) => void;
 }
 
 export class Library extends React.Component<LibraryProps, {}> {
@@ -16,7 +16,7 @@ export class Library extends React.Component<LibraryProps, {}> {
     return (
       <>
         <a className={this.getClass()} onClick={this.handleClick}>
-          <span className="icon icon-note" />
+          <span className="icon icon-folder" />
           {this.props.name}
         </a>
       </>
@@ -29,6 +29,6 @@ export class Library extends React.Component<LibraryProps, {}> {
 
   handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    this.props.handleClick(this.props.id);
+    this.props.onClick(this.props.id);
   };
 }

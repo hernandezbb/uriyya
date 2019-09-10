@@ -13,13 +13,15 @@ export function selectionReducer(state = initialState, action: types.ActionsType
       return {
         ...state,
         selectedLibrary: action.payload,
-        selectedPlaylist: 0
+        selectedPlaylist: 0,
+        selectedSong: 0
       };
     case types.SET_SELECTED_PLAYLIST:
       return {
         ...state,
         selectedPlaylist: action.payload,
-        selectedLibrary: 0
+        selectedLibrary: 0,
+        selectedSong: 0
       };
     case types.SET_SELECTED_SONG:
       return {

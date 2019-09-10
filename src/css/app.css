@@ -1,11 +1,4 @@
-header{
-    height: 45px;
-    padding-left: 80px;
-    padding-top: 7px;
-    -webkit-app-region: drag;
-}
-
-.pane-sm{
-    width: 250px;
-    max-width: 300px !important;
+.pane-sm {
+  width: 250px;
+  max-width: 300px !important;
 }

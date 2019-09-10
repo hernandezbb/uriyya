@@ -23,6 +23,15 @@ class PlaylistList extends React.Component<PlaylistListProps> {
   }
 
   render() {
+    return (
+      <>
+        <h5 className="nav-group-title">Playlists</h5>
+        {this.mapThePlaylists()}
+      </>
+    );
+  }
+
+  mapThePlaylists = (): JSX.Element[] => {
     return this.props.playlists.map(thePlaylist => (
       <Playlist
         key={thePlaylist.id}
@@ -31,7 +40,7 @@ class PlaylistList extends React.Component<PlaylistListProps> {
         handleClick={this.playlistClickHandler}
       />
     ));
-  }
+  };
 
   isActive(thePlaylistId: number) {
     return thePlaylistId == this.props.selectedPlaylist;

@@ -1,0 +1,21 @@
+.sidebar {
+  display: grid;
+}
+
+.listbar {
+  grid-area: "lists";
+}
+
+.actions {
+  grid-area: "toolbar";
+  align-self: end;
+
+  height: 60px;
+  padding-top: 15px;
+  padding-left: 5px;
+  text-align: center;
+}
+
+.actions > button {
+  display: inline-block;
+}

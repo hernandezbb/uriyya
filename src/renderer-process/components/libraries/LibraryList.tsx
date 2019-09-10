@@ -23,15 +23,24 @@ class LibraryList extends React.Component<LibraryListProps> {
   }
 
   render() {
+    return (
+      <>
+        <h5 className="nav-group-title">Libraries</h5>
+        {this.mapLibraries()}
+      </>
+    );
+  }
+
+  mapLibraries = (): JSX.Element[] => {
     return this.props.libraries.map(theLibrary => (
       <Library
         key={theLibrary.id}
         {...theLibrary}
         isActive={this.isActive(theLibrary.id)}
-        handleClick={this.libraryClickHandler}
+        onClick={this.libraryClickHandler}
       />
     ));
-  }
+  };
 
   isActive(theLibraryId: number) {
     return theLibraryId == this.props.selectedLibrary;

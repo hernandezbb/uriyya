@@ -8,6 +8,8 @@ import { configureStore } from './store/configureStore';
 require("../css/photon.min.css");
 require("../css/app.css");
 require("../css/playlist.css");
+require("../css/sidebar.css");
+require("../css/header.css");
 
 if (process.env.NODE_ENV !== "production") {
   console.log("Looks like we are in development mode!");

@@ -12,7 +12,6 @@ function loadSongs(theSongs: ViewModels.Song[]): types.ActionsTypes {
 export function getSongsByLibraryId(
   theLibraryId: number
 ): ThunkAction<void, AppState, null, Action<types.ActionsTypes>> {
-  debugger;
   return (dispatch: Dispatch<AnyAction>) => {
     var theSongs = songsAPI.getSongsByLibraryId(theLibraryId);
     return dispatch(loadSongs(theSongs));
@@ -22,7 +21,6 @@ export function getSongsByLibraryId(
 export function getSongsByPlaylistId(
   thePlaylistId: number
 ): ThunkAction<void, AppState, null, Action<types.ActionsTypes>> {
-  debugger;
   return (dispatch: Dispatch<AnyAction>) => {
     var theSongs = songsAPI.getSongsByPlaylistId(thePlaylistId);
     return dispatch(loadSongs(theSongs));
