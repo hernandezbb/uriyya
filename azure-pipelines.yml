@@ -10,21 +10,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run make
-  displayName: 'npm install and make'
-
-- task: CopyFiles@2
+  - task: NodeTool@0
     inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)'
-      Contents: out/make/**
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      OverWrite: true
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-- task: PublishBuildArtifacts@1
+  - script: |
+      npm install
+      npm run make
+    displayName: 'npm install and make'
