@@ -1,7 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ClosurePlugin = require("closure-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 process.env.NODE_ENV = "production";
 
@@ -27,9 +25,6 @@ module.exports = [
           exclude: /node_modules/
         }
       ]
-    },
-    optimization: {
-      minimizer: [new ClosurePlugin({ mode: "STANDARD" }, {})]
     }
   },
   {
@@ -89,9 +84,6 @@ module.exports = [
           ]
         }
       ]
-    },
-    optimization: {
-      minimizer: [new ClosurePlugin({ mode: "STANDARD" }, {}), new OptimizeCSSAssetsPlugin({})]
     }
   }
 ];
