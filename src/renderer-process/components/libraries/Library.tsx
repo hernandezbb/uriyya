@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 
 interface LibraryProps {
   id: number;
@@ -24,7 +24,7 @@ export class Library extends React.Component<LibraryProps, {}> {
   }
 
   getClass(): string {
-    return `nav-group-item ${this.props.isActive ? "active" : ""}`;
+    return `nav-group-item ${this.props.isActive ? 'active' : ''}`;
   }
 
   handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {

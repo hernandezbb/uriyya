@@ -7,15 +7,13 @@
     "type": "git",
     "url": "https://github.com/hernandezbb/uriyya.git"
   },
-  "main": "dist/main.js",
+  "main": ".webpack/main",
   "scripts": {
-    "build-dev": "webpack -dw --config webpack.dev.js",
-    "build": "webpack -p --config webpack.prod.js",
     "start": "electron-forge start",
-    "package": "npm run build && electron-forge package",
-    "make": "npm run build && electron-forge make",
-    "publish": "npm run build && electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts ."
   },
   "keywords": [],
   "author": "hernandezbb",
@@ -23,6 +21,7 @@
   "config": {
     "forge": "./forge.config.js"
   },
+  "browserslist": "last 2 Chrome versions",
   "dependencies": {
     "howler": "^2.0.15",
     "mousetrap": "^1.6.2",
@@ -36,8 +35,12 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.39",
-    "@electron-forge/maker-zip": "6.0.0-beta.39",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.57",
     "@types/howler": "^2.1.0",
     "@types/mousetrap": "^1.6.2",
     "@types/nedb": "^1.8.7",
@@ -45,18 +48,22 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.1.1",
     "@types/redux-immutable-state-invariant": "^2.1.1",
-    "awesome-typescript-loader": "^5.2.1",
-    "css-loader": "2.1.1",
-    "electron": "5.0.5",
-    "file-loader": "^4.0.0",
-    "html-webpack-plugin": "3.2.0",
-    "mini-css-extract-plugin": "^0.7.0",
-    "source-map-loader": "^0.2.4",
-    "style-loader": "0.23.1",
-    "ts-loader": "^6.0.4",
-    "typescript": "^3.6.2",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.4",
-    "webpack-merge": "^4.2.1"
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "css-loader": "5.2.6",
+    "electron": "13.1.6",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-merge": "^5.8.0"
   }
 }

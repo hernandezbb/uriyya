@@ -16,10 +16,14 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const store = configureStore();
+function render() {
 
-ReactDOM.render(
-  <ReduxProvider store={store}>
-    <App />
-  </ReduxProvider>,
-  document.getElementById("main")
-);
+  ReactDOM.render(
+    <ReduxProvider store={store}>
+      <App />
+    </ReduxProvider>,
+    document.getElementById("root")
+  );
+}
+
+render();

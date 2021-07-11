@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 
 import { Actions } from '../actions/Actions';
 import LibraryList from '../libraries/LibraryList';
