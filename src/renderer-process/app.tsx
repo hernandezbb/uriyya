@@ -1,29 +1,32 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider as ReduxProvider } from 'react-redux';
+import { PlayList } from './Playlist/PlayList';
+import 'tailwindcss/tailwind.css';
+import { song } from './Playlist/song';
 
-import { App } from './components/App';
-import { configureStore } from './store/configureStore';
+require('./app.css');
 
-require("../css/photon.min.css");
-require("../css/app.css");
-require("../css/playlist.css");
-require("../css/sidebar.css");
-require("../css/header.css");
-
-if (process.env.NODE_ENV !== "production") {
-  console.log("Looks like we are in development mode!");
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
 }
 
-const store = configureStore();
-function render() {
+function App(): JSX.Element {
+  const songs: song[] = [
+    { id: 1, name: 'Song 1', isSelected: false },
+    { id: 2, name: 'Song 2', isSelected: false },
+    { id: 3, name: 'Song 3', isSelected: false },
+    { id: 4, name: 'Song 4', isSelected: false },
+  ];
 
-  ReactDOM.render(
-    <ReduxProvider store={store}>
-      <App />
-    </ReduxProvider>,
-    document.getElementById("root")
+  return (
+    <main>
+      <PlayList songs={songs} />
+    </main>
   );
+}
+
+function render() {
+  ReactDOM.render(<App />, document.getElementById('root'));
 }
 
 render();
